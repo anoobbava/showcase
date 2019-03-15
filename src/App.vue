@@ -1,21 +1,17 @@
 <template>
   <v-app>
-    <v-toolbar app>
-      <v-toolbar-title class="headline text-uppercase">
-        <span class="font-weight-light">{{title}}</span>
-      </v-toolbar-title>
-    </v-toolbar>
+    <!-- display nav bar -->
+    <nav-bar></nav-bar>
   </v-app>
 </template>
 
 <script>
+import NavBar from '@/views/NavBar'
 
 export default {
   name: 'App',
-  data () {
-    return {
-      title: process.env.VUE_APP_TITLE
-    }
+  components: {
+    NavBar
   }
 }
 </script>
