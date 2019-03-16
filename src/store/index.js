@@ -62,8 +62,17 @@ export default new Vuex.Store({
         })
     },
 
-    signOutAction () {
-
+    signOutAction ({ commit }) {
+      firebase.auth().signOut()
+        .then((response) => {
+          commit('setUser', null)
+          commit('setStatus', 'success')
+          commit('setError', null)
+        })
+        .catch((error) => {
+          commit('setStatus', 'failure')
+          commit('setError', error.message)
+        })
     }
   },
 

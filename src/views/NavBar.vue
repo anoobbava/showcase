@@ -13,16 +13,16 @@
       <v-spacer></v-spacer>
 
       <!-- navigation bar links -->
-      <v-toolbar-items class='hidden-xs-only'>
+      <v-toolbar-items class='hidden-xs-only' v-if="!userLogedIn">
         <v-btn flat v-for="item in items" :key="item.title" :to="item.link">
           <v-icon right>{{item.icon}}</v-icon>{{item.title}}
         </v-btn>
         <v-spacer></v-spacer>
       </v-toolbar-items>
       <!-- sign out button -->
-      <v-toolbar-items class='hidden-xs-only'>
+      <v-toolbar-items class='hidden-xs-only' v-else>
         <v-btn
-          flat
+          flat @click='logoutFromFirebase'
           >
           <v-icon right>delete_sweep</v-icon>Logout
         </v-btn>
@@ -47,6 +47,15 @@ export default {
         }
       ]
       return menuItems
+    },
+
+    userLogedIn () {
+      return this.$store.getters.user
+    }
+  },
+  methods: {
+    logoutFromFirebase () {
+      this.$store.dispatch('signOutAction')
     }
   }
 }
