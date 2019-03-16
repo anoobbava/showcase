@@ -33,8 +33,8 @@
 <script>
 export default {
   computed: {
-    items() {
-      let menuItems =  [
+    items () {
+      let menuItems = [
         {
           title: 'Register',
           icon: 'face',
@@ -46,7 +46,7 @@ export default {
           link: '/login'
         }
       ]
-    return menuItems
+      return menuItems
     }
   }
 }
