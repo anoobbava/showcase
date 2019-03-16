@@ -55,7 +55,7 @@
 </template>
 
 <script>
-import firebase from 'firebase'
+// import firebase from 'firebase'
 export default {
 
   data: () => ({
@@ -88,15 +88,11 @@ export default {
     },
 
     registerWithFirebase () {
-      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
-        .then((response) => {
-          alert('success')
-          console.log(response)
-        })
-        .catch((error) => {
-          alert('failure')
-          console.log(error)
-        })
+      const user = {
+        email: this.email,
+        password: this.password
+      }
+      this.$store.dispatch('signUpAction', user)
     }
   }
 }

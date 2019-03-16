@@ -84,6 +84,7 @@ export default {
         })
         .catch((error) => {
           alert('failure')
+          debugger
           console.log(error)
         })
     }
