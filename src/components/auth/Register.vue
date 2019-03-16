@@ -55,6 +55,7 @@
 </template>
 
 <script>
+import firebase from 'firebase'
 export default {
 
   data: () => ({
@@ -74,13 +75,28 @@ export default {
   }),
 
   methods: {
+
     validate () {
       if (this.$refs.form.validate()) {
         this.snackbar = true
+        this.registerWithFirebase()
       }
     },
+
     reset () {
       this.$refs.form.reset()
+    },
+
+    registerWithFirebase () {
+      firebase.auth().createUserWithEmailAndPassword(this.email, this.password)
+        .then((response) => {
+          alert('success')
+          console.log(response)
+        })
+        .catch((error) => {
+          alert('failure')
+          console.log(error)
+        })
     }
   }
 }
